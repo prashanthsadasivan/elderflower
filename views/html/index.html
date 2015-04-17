@@ -1,0 +1,27 @@
+{{template "header.html" .}}
+<h1> Scan this QR code with your app to set up your smswebproxy</h1>
+<div id="qr">
+</div>
+
+
+<script type="text/jsx">
+    var QrCode = React.createClass({
+        getInitialState: function() {
+            return {qrsource: "/QR?hostname=" + document.URL};
+        },
+        componentDidMount: function() {
+            var self = this;
+        },
+
+        render: function() {
+            return <img src={this.state.qrsource} />
+        }
+    });
+
+    React.render(
+        <QrCode />,
+        document.getElementById("qr")
+    );
+</script>
+
+{{template "footer.html" .}}
