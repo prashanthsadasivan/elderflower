@@ -1,17 +1,24 @@
 package main
 
 import (
+	"elderflower/controllers"
+	"elderflower/middleware"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"smswebproxy/controllers"
 )
 
 func main() {
 	r := gin.Default()
+	//Initialize middlewares
+	for _, middleware := range middleware.Middlewares() {
+		r.Use(middleware)
+	}
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, "pong")
 	})
 	r.Static("/public", "./compiled/public")
+	r.Static("/jsx", "./compiled/jsx/app.js")
 	r.LoadHTMLGlob("compiled/html/*")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
