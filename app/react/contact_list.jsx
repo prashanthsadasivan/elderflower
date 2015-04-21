@@ -3,24 +3,24 @@ var ContactList = React.createClass({
     return { contacts: {}, selectedNum: ''}
   },
   componentDidMount: function() {
-    window.register("contactlist", "smsmessage", function(data) {
+    Dispatcher.register("contactlist", "smsmessage", function(data) {
       this.state.contacts[data.num] = true;
       this.setState({contacts: this.state.contacts});
       console.log("whatupdude", this.state);
     }.bind(this));
-    window.register("contactlist", "receipient_selected", function(data) {
+    Dispatcher.register("contactlist", "receipient_selected", function(data) {
       this.setState({selectedNum: data.num});
     }.bind(this));
   },
   componentWillUnmount: function() {
-    window.unregister("contactlist", "smsmessage");
-    window.unregister("contactlist", "receipient_selected");
+    Dispatcher.unregister("contactlist", "smsmessage");
+    Dispatcher.unregister("contactlist", "receipient_selected");
   },
   handleNumChange: function(event) {
-    fireEvent("receipient_selected", {num: event.target.value})
+    Dispatcher.fireEvent("receipient_selected", {num: event.target.value})
   },
   handleNumClick: function(event) {
-    fireEvent("receipient_selected", {num: event.target.getAttribute('value')});
+    Dispatcher.fireEvent("receipient_selected", {num: event.target.getAttribute('value')});
   },
   render: function() {
     var self = this;

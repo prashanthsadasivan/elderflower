@@ -17,10 +17,16 @@ type SMSMessage struct {
 	CreateDate time.Time
 }
 
+type QrCodeSecret struct {
+	WebsocketModel
+	Qr_secret string
+}
+
 type SoleUser struct {
-	Number string
-	GcmId  string
-	UserId int
+	Number   string
+	GcmId    string
+	UserId   int
+	QrSecret string
 }
 
 func GetSoleUser(txn *gorp.Transaction) *SoleUser {

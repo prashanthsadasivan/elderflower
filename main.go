@@ -21,14 +21,15 @@ func main() {
 	})
 
 	//Application routes
+	r.POST("/users", controllers.User_Create)
 	r.GET("/QR", controllers.QR)
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, "pong")
 	})
-
 	r.GET("/websocket", func(c *gin.Context) {
 		controllers.HandleSocket(c)
 	})
+	r.POST("/messages/receive", controllers.Messages_Receive)
 
 	r.Run(":2020")
 }

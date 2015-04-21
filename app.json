@@ -1,0 +1,14 @@
+{
+    "name": "smswebproxy",
+    "description": "This app lets you receive and send messages from your own personal web site, deployed to your own heroku account!",
+    "keywords": ["text", "messaging", "iMessage", "proxy", "text messaging", "sms"],
+    "repository": "https://github.com/prashanthsadasivan/smswebproxy",
+    "env": {
+        "BUILDPACK_URL": "https://github.com/kr/heroku-buildpack-go"
+    },
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ]
+}
+
+

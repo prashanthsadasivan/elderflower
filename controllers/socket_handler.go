@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"elderflower/controllers/socket_handlers"
+	"elderflower/models"
+	"elderflower/services/appconnections"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/net/websocket"
 	"log"
@@ -12,9 +14,19 @@ func socketController(c *gin.Context) websocket.Handler {
 		// In order to select between websocket messages and subscription events, we
 		// need to stuff websocket events into a channel.
 		c.Request.ParseForm()
-		num := c.Request.Form.Get("num")
-		log.Printf("num: %s\n", num)
-		appconnection := GorcAppConnection(num, c)
+		qr_secret := c.Request.Form.Get("qr_secret")
+		var appconnection *appconnections.AppConnection
+		if qr_secret == "" {
+			var qr_secret string
+			qr_secret, appconnection = appconnections.GenerateForQR()
+			if websocket.JSON.Send(ws, &models.QrCodeSecret{models.WebsocketModel{"qr_delivery"}, qr_secret}) != nil {
+				return
+			}
+			log.Printf("qrwasempty\n")
+		} else {
+			appconnection = GorcAppConnection(qr_secret, c)
+			log.Printf("gotorcreated\n")
+		}
 		messagesToSend := appconnection.Start(ws)
 		log.Printf("socket appconn %+v\n", appconnection)
 

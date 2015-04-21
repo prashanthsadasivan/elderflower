@@ -7,5 +7,5 @@ import (
 )
 
 func handlePing(sms models.SMSMessage, appconnection *appconnections.AppConnection, ws *websocket.Conn) bool {
-	return websocket.JSON.Send(ws, "pong") != nil
+	return websocket.JSON.Send(ws, models.WebsocketModel{"pong"}) != nil
 }

@@ -3,16 +3,16 @@ var Thread = React.createClass({
     return { Messages: [], selectedNum: '' };
   },
   componentDidMount: function() {
-    window.register("thread", "smsmessage", function(data) {
+    Dispatcher.register("thread", "smsmessage", function(data) {
       this.setState({ Messages: this.state.Messages.concat([{ Message: data.message, Num: data.num, You: data.you }])});
     }.bind(this));
-    window.register("thread", "receipient_selected", function(data) {
+    Dispatcher.register("thread", "receipient_selected", function(data) {
       this.setState({selectedNum: data.num});
     }.bind(this));
   },
   componentWillUnmount: function() {
-    window.unregister("thread", "smsmessage");
-    window.unregister("thread", "receipient_selected");
+    Dispatcher.unregister("thread", "smsmessage");
+    Dispatcher.unregister("thread", "receipient_selected");
   },
   componentDidUpdate: function() {
     $('.swpthread').scrollTo('max');

@@ -3,12 +3,12 @@ var MessageForm = React.createClass({
     return {MessageType: 'SMS/Send', Message: '', Num: ''};
   },
   componentDidMount: function() {
-    window.register("messageform", "receipient_selected", function(data) {
+    Dispatcher.register("messageform", "receipient_selected", function(data) {
       this.setState({Num: data.num});
     }.bind(this));
   },
   componentWillUnmount: function() {
-    window.unregister("messageform", "receipient_selected");
+    Dispatcher.unregister("messageform", "receipient_selected");
   },
   handleMessageChange: function(event) {
     this.setState({Message: event.target.value});
@@ -16,12 +16,12 @@ var MessageForm = React.createClass({
   handleKeyUp: function(event) {
     if (event.which === 13 && this.state.Message != "" && this.state.Message != null && this.state.Message != undefined) {
       this.handleSendClick();
-      fireEvent("smsmessage", {message: this.state.Message, num: this.state.Num, you: true});
+      Dispatcher.fireEvent("smsmessage", {message: this.state.Message, num: this.state.Num, you: true});
     }
   },
   handleSendClick: function(event) {
     console.log(this.state);
-    socket.send(JSON.stringify(this.state))
+    AppSocket.send(JSON.stringify(this.state))
     this.setState({Message: ''});
   },
   render: function() {

@@ -26,8 +26,9 @@ func DatabaseMiddleware() gin.HandlerFunc {
 
 	t := Dbm.AddTable(models.SoleUser{}).SetKeys(true, "UserId")
 	setColumnSizes(t, map[string]int{
-		"Number": 15,
-		"GcmId":  2000,
+		"Number":   15,
+		"GcmId":    2000,
+		"QrSecret": 35,
 	})
 
 	t = Dbm.AddTable(models.SMSMessage{}).SetKeys(true, "MessageId")

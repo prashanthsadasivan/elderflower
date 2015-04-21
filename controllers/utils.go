@@ -7,11 +7,11 @@ import (
 	"github.com/go-gorp/gorp"
 )
 
-func GorcAppConnection(num string, c *gin.Context) *appconnections.AppConnection {
-	appconnection := appconnections.GetAppConnection(num)
+func GorcAppConnection(qr_secret string, c *gin.Context) *appconnections.AppConnection {
+	appconnection := appconnections.GetAppConnection(qr_secret)
 	if appconnection == nil {
 		soleUser := models.GetSoleUser(Txn(c))
-		appconnection = appconnections.New(soleUser.GcmId, soleUser.Number)
+		appconnection = appconnections.New(soleUser.GcmId, soleUser.QrSecret)
 	}
 
 	return appconnection

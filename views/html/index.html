@@ -1,13 +1,13 @@
 {{template "header.html" .}}
 <h1> Scan this QR code with your app to set up your smswebproxy</h1>
-<div id="qr">
+<div id="application">
 </div>
 
 
 <script type="text/jsx">
   React.render(
-    <QrCode />,
-    document.getElementById("qr")
+    <Application />,
+    document.getElementById("application")
   );
 </script>
 

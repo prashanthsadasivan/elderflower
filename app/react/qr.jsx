@@ -2,11 +2,8 @@ var QrCode = React.createClass({
   getInitialState: function() {
       return {qrsource: "/QR?hostname=" + document.URL};
   },
-  componentDidMount: function() {
-      var self = this;
-  },
-
   render: function() {
-      return <img src={this.state.qrsource} />
+    console.log(this.props);
+    return <img src={this.state.qrsource + '&qr_secret=' + this.props.qr_secret}/>;
   }
 });

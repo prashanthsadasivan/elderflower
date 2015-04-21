@@ -1,0 +1,43 @@
+{
+	"ImportPath": "elderflower",
+	"GoVersion": "go1.4",
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/rsc/gf256",
+			"Comment": "null-258",
+			"Rev": "2d8aa6027fab93979a3b4ecdbeb1ba430b489318"
+		},
+		{
+			"ImportPath": "code.google.com/p/rsc/qr",
+			"Comment": "null-258",
+			"Rev": "2d8aa6027fab93979a3b4ecdbeb1ba430b489318"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v0.6",
+			"Rev": "e2fa89777e344782ef5d31929f095f4589c35dcc"
+		},
+		{
+			"ImportPath": "github.com/go-gorp/gorp",
+			"Comment": "v1.7-63-g6d3d64e",
+			"Rev": "6d3d64eb828eb0e96a99234d8954e3ad89e2f1d7"
+		},
+		{
+			"ImportPath": "github.com/julienschmidt/httprouter",
+			"Rev": "b59a38004596b696aca7aa2adccfa68760864d86"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-40-g8910d1c",
+			"Rev": "8910d1c3a4bda5c97c50bc38543953f1f1e1f8bb"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Rev": "d67e0b7d1797975196499f79bcc322c08b9f218b"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "84ba27dd5b2d8135e9da1395277f2c9333a2ffda"
+		}
+	]
+}

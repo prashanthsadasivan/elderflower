@@ -1,6 +1,6 @@
 var MessageRow = React.createClass({
   numClicked: function(event) {
-    fireEvent("receipient_selected", {num: this.props.Num})
+    Dispatcher.fireEvent("receipient_selected", {num: this.props.Num})
   },
   render: function() {
     return <div className={this.props.You ? "message you" : "message"}>

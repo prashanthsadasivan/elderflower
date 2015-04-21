@@ -4,7 +4,18 @@ import (
 	"elderflower/models"
 	"golang.org/x/net/websocket"
 	"log"
+	"math/rand"
 )
+
+var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func randSeq(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
+}
 
 var (
 	conduits map[string]*AppConnection
@@ -19,20 +30,24 @@ type AppConnection struct {
 	RegId    string
 }
 
-func GetAppConnection(number string) *AppConnection {
-	return conduits[number]
+func GetAppConnection(key string) *AppConnection {
+	return conduits[key]
 }
 
-func AddAppConnection(num string, conduit *AppConnection) {
-	conduits[num] = conduit
-}
-
-func New(regid, num string) *AppConnection {
+func New(regid, qr_secret string) *AppConnection {
 	conduit := new(AppConnection)
 	conduit.RegId = regid
 	conduit.Received = make(chan models.SMSMessage)
-	conduits[num] = conduit
+	conduits[qr_secret] = conduit
 	return conduit
+}
+
+func GenerateForQR() (string, *AppConnection) {
+	conduit := new(AppConnection)
+	conduit.Received = make(chan models.SMSMessage)
+	key := randSeq(18)
+	conduits[key] = conduit
+	return key, conduit
 }
 
 func (c AppConnection) Start(ws *websocket.Conn) chan models.SMSMessage {
