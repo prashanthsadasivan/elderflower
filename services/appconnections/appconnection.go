@@ -2,8 +2,8 @@ package appconnections
 
 import (
 	"elderflower/models"
-	"fmt"
 	"golang.org/x/net/websocket"
+	"log"
 )
 
 var (
@@ -42,11 +42,11 @@ func (c AppConnection) Start(ws *websocket.Conn) chan models.SMSMessage {
 		for {
 			err := websocket.JSON.Receive(ws, &sms)
 			if err != nil {
-				fmt.Printf("err: %s\n", err.Error())
+				log.Printf("err: %s\n", err.Error())
 				close(messagesToSend)
 				return
 			}
-			fmt.Printf("got message from ws: %+v\n", sms)
+			log.Printf("got message from ws: %+v\n", sms)
 			messagesToSend <- sms
 		}
 	}()

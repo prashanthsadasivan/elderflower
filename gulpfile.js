@@ -5,7 +5,7 @@ gulp.task('default', function() {
   gulp.src('./views/**')
       .pipe(gulp.dest('compiled/'));
   console.log("here");
-  gulp.src('./app/react/**/*.jsx')
+  gulp.src(['./app/react/**/*.jsx', './app/js/**/*.js'])
       .pipe(concat('app.jsx'))
       .pipe(gulp.dest('compiled/jsx'));
 });

@@ -37,6 +37,7 @@ func DatabaseMiddleware() gin.HandlerFunc {
 	})
 	Dbm.TraceOn("[gorp]", log.New(ioutil.Discard, "INFO  ", log.Ldate|log.Ltime|log.Lshortfile))
 	Dbm.CreateTables()
+	log.Println("initialized")
 	return func(c *gin.Context) {
 		txn, err := Dbm.Begin()
 		if err != nil {

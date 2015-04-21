@@ -10,21 +10,25 @@ import (
 func main() {
 	r := gin.Default()
 	//Initialize middlewares
-	for _, middleware := range middleware.Middlewares() {
-		r.Use(middleware)
-	}
+	r.Use(middleware.Middlewares()...)
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.String(http.StatusOK, "pong")
-	})
+	//Statics, Javascripts and templates
 	r.Static("/public", "./compiled/public")
-	r.Static("/jsx", "./compiled/jsx/app.js")
+	r.Static("/jsx", "./compiled/jsx")
 	r.LoadHTMLGlob("compiled/html/*")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
-	r.GET("/QR", controllers.QR)
 
-	// Listen and serve on 0.0.0.0:8080
+	//Application routes
+	r.GET("/QR", controllers.QR)
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(http.StatusOK, "pong")
+	})
+
+	r.GET("/websocket", func(c *gin.Context) {
+		controllers.HandleSocket(c)
+	})
+
 	r.Run(":2020")
 }

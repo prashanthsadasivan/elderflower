@@ -10,8 +10,3 @@ var QrCode = React.createClass({
       return <img src={this.state.qrsource} />
   }
 });
-
-React.render(
-  <QrCode />,
-  document.getElementById("qr")
-);
