@@ -12,6 +12,7 @@ func init() {
 	config = make(map[string]string)
 	config["driver"] = "postgres"
 	config["spec"] = "dbname=smswebproxy sslmode=disable"
+	config["port"] = ":80"
 }
 
 func Get(key string) string {

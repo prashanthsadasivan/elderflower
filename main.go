@@ -1,6 +1,7 @@
 package main
 
 import (
+	"elderflower/config"
 	"elderflower/controllers"
 	"elderflower/middleware"
 	"github.com/gin-gonic/gin"
@@ -31,5 +32,5 @@ func main() {
 	})
 	r.POST("/messages/receive", controllers.Messages_Receive)
 
-	r.Run(":2020")
+	r.Run(config.Get("port"))
 }
