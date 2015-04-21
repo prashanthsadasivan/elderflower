@@ -1,6 +1,7 @@
 package config
 
 import (
+	"log"
 	"os"
 )
 
@@ -12,11 +13,12 @@ func init() {
 	config = make(map[string]string)
 	config["driver"] = "postgres"
 	config["spec"] = "dbname=smswebproxy sslmode=disable"
-	config["port"] = ":80"
+	config["PORT"] = "2020"
 }
 
 func Get(key string) string {
 	ret := os.Getenv(key)
+	log.Printf("env for %s was %s\n", key, ret)
 	if ret == "" {
 		ret = config[key]
 	}

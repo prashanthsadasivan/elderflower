@@ -32,5 +32,5 @@ func main() {
 	})
 	r.POST("/messages/receive", controllers.Messages_Receive)
 
-	r.Run(config.Get("port"))
+	r.Run(":" + config.Get("PORT"))
 }
