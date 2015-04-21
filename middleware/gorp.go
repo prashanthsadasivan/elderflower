@@ -12,7 +12,7 @@ import (
 )
 
 func DatabaseMiddleware() gin.HandlerFunc {
-	Db, err := sql.Open(config.Get("driver"), config.Get("spec"))
+	Db, err := sql.Open(config.Get("driver"), config.Get("DATABASE_URL"))
 	if err != nil {
 		panic(err)
 	}

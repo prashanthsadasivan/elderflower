@@ -12,7 +12,7 @@ var (
 func init() {
 	config = make(map[string]string)
 	config["driver"] = "postgres"
-	config["spec"] = "dbname=smswebproxy sslmode=disable"
+	config["DATABASE_URL"] = "dbname=smswebproxy sslmode=disable"
 	config["PORT"] = "2020"
 }
 
