@@ -4,7 +4,7 @@
     "keywords": ["text", "messaging", "iMessage", "proxy", "text messaging", "sms"],
     "repository": "https://github.com/prashanthsadasivan/smswebproxy",
     "env": {
-        "BUILDPACK_URL": "https://github.com/kr/heroku-buildpack-go"
+        "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi"
     },
     "addons": [
         "heroku-postgresql:hobby-dev"

@@ -1,1 +1,1 @@
-web: ./bin/elderflower
+web: gulp && ./bin/elderflower
