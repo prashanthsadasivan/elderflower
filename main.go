@@ -16,6 +16,7 @@ func main() {
 	//Statics, Javascripts and templates
 	r.Static("/public", "./compiled/public")
 	r.Static("/jsx", "./compiled/jsx")
+	r.Static("/css", "./compiled/css")
 	r.LoadHTMLGlob("compiled/html/*")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)

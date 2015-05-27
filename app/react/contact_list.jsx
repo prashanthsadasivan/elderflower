@@ -19,17 +19,12 @@ var ContactList = React.createClass({
   handleNumChange: function(event) {
     Dispatcher.fireEvent("receipient_selected", {num: event.target.value})
   },
-  handleNumClick: function(event) {
-    Dispatcher.fireEvent("receipient_selected", {num: event.target.getAttribute('value')});
-  },
   render: function() {
     var self = this;
     return <div className="contact-list">
       {
         Object.keys(this.state.contacts).map(function(num, i) {
-          return <div key={i} onClick={self.handleNumClick} value={num} className={self.state.selectedNum == num ? "contact bold" : "contact"} >
-            <p value={num}>{num}</p>
-          </div>
+          return <Contact key={i} contactNum={num} className={self.state.selectedNum == num ? "contact bold" : "contact"} />
         })}
       <input type="text" placeholder="number" className="num" value={self.state.selectedNum} onChange={this.handleNumChange} />
     </div>
