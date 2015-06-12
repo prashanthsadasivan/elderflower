@@ -8,7 +8,7 @@ gulp.task('default', function() {
       .pipe(concat('app.jsx'))
       .pipe(gulp.dest('compiled/jsx'));
   console.log("concat app css into compiled/css");
-  gulp.src(['./app/css/**/*.css'])
+  gulp.src(['./app/styles/**/*.css'])
       .pipe(concat('app.css'))
       .pipe(gulp.dest('compiled/css'));
   console.log("done");
