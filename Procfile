@@ -1,1 +1,1 @@
-web: which node && gulp && ./bin/elderflower
+web: ./bin/elderflower
