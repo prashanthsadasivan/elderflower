@@ -1,0 +1,147 @@
+html, body {
+    background: #ddd;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, Sans;
+}
+x
+
+#home {
+    margin: 100px auto;
+    text-align: center;
+}
+
+#signin {
+    margin: 10px auto;
+    width: 400px;
+    border: 8px solid #333;
+    padding: 20px;
+    background: #fff;
+    text-align: left;
+}
+
+#signin p {
+    margin: 5px 0;
+}
+
+#signin label {
+    font-size: 14px;
+    display: block;
+    width: 150px;
+    text-align: right;
+    float: left;
+    margin-right: 5px;
+    padding-top: 2px;
+}
+
+#signin #nick {
+    margin-left: 10px;
+    width: 200px;
+}
+
+#signin #enter {
+    display: block;
+    margin: 10px 0 0 160px;
+}
+
+#signin .error {
+    background: #c00;
+    margin: 0 0 10px 0;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+h1 {
+    background: #111;
+    margin: 0;
+    color: gold;
+    padding: 7px 14px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+h1 a {
+    position: absolute;
+    right: 1em;
+    color: lightblue;
+}
+
+.message {
+    border-bottom: 1px solid #efefef;
+    position: relative;
+}
+
+.swpcontainer {
+  position: relative;
+  max-width: 960px;
+  width: 1960px;
+  height: 768px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.contact-list {
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 250px;
+  border-right: 1px solid black;
+  z-index: 99999;
+}
+.contact-list .contact {
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  border-bottom: 1px solid blue;
+  cursor: pointer;
+}
+.bold {
+  font-weight: bold;
+}
+
+.swpthread {
+  position: absolute;
+  left: 250px;
+  right: 0;
+  bottom: 36px;
+  top: 0px;
+  background: white;
+  overflow-y: scroll;
+  padding: 0px 5px;
+}
+.message-compose {
+  position: absolute;
+  left: 250px;
+  bottom: 0;
+  right: 0;
+  background: white;
+  padding: 0px 5px 0px 0px;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  background: white;
+  boarder-top: 1px solid blue;
+}
+
+.contact-list input {
+  position: absolute;
+  bottom: 0;
+  width: 97.5%;
+}
+
+
+.message {
+  font-size: 12px;
+  width: 100%;
+  padding: 5px;
+}
+
+
+.message.you * {
+  text-align: right;
+}
+
