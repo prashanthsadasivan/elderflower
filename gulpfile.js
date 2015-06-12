@@ -4,14 +4,14 @@ var gulp   = require('gulp')
 gulp.task('default', function() {
   gulp.src('./views/**')
       .pipe(gulp.dest('compiled/'));
-  console.log("here");
   gulp.src(['./app/react/**/*.jsx', './app/js/**/*.js'])
       .pipe(concat('app.jsx'))
       .pipe(gulp.dest('compiled/jsx'));
+  console.log("concat app css into compiled/css");
   gulp.src(['./app/css/**/*.css'])
       .pipe(concat('app.css'))
       .pipe(gulp.dest('compiled/css'));
-
+  console.log("done");
 });
 
 gulp.task('live',['default'], function() {
