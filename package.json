@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "echo 'before' && ls app/ && ls app/css && cat gulpfile.js && gulp && echo 'after' && ls app/ && ls app/css && ls compiled/"
+    "postinstall": "gulp && ls compiled/"
   },
   "author": "",
   "license": "ISC"
